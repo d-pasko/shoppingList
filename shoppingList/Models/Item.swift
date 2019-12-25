@@ -9,8 +9,15 @@
 import Foundation
 
 struct Item: Identifiable {
-    let id: UUID = .init()
+    let id: UUID
     let name: String
     let date: Date
     let prority: Priority
+    
+    init(id: UUID = .init(), name: String, date: Date, prority: Priority) {
+        self.id = id
+        self.name = name
+        self.date = date
+        self.prority = prority
+    }
 }
