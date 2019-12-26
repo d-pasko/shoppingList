@@ -11,7 +11,7 @@ import XCTest
 
 class AppStateTests: XCTestCase {
 
-    func test_State_1() {
+    func test_equal() {
         let mockItems = [Item(name: "mockItem", date: .init(timeIntervalSinceNow: -10), prority: .high),
                          Item(name: "mockItem", date: .init(timeIntervalSince1970: 10), prority: .low)]
         
@@ -20,14 +20,14 @@ class AppStateTests: XCTestCase {
         XCTAssertEqual(mockState, AppState(items: mockItems, sortType: .priority))
     }
     
-    func test_State_2() {
+    func test_notEqual() {
         let mockItems = [Item(name: "mockItem", date: .init(timeIntervalSinceNow: -10), prority: .high),
                          Item(name: "mockItem", date: .init(timeIntervalSince1970: 10), prority: .low),
                          Item(name: "mockItem", date: .init(timeIntervalSince1970: 110), prority: .medium)]
         
         let mockState = AppState(items: mockItems.reversed(), sortType: .date)
                 
-        XCTAssertEqual(mockState, AppState(items: mockItems.reversed(), sortType: .date))
+        XCTAssertNotEqual(mockState, AppState(items: mockItems, sortType: .date))
     }
 }
 

@@ -12,31 +12,31 @@ import XCTest
 class AppActionTests: XCTestCase {
 
     func test_addItem() {
-        let mockItem = Item(name: "MockItem", date: .init(timeIntervalSinceNow: -2000), prority: .medium)
+        let item = Item(name: "MockItem", date: .init(timeIntervalSinceNow: -2000), prority: .medium)
         
-        let sutAction = AppAction.addItem(item: mockItem)
+        let sutAction = AppAction.addItem(item: item)
         
-        XCTAssertEqual(sutAction, AppAction.addItem(item: mockItem))
+        XCTAssertEqual(sutAction, .addItem(item: item))
     }
     
     func test_removeItem() {
-        let mockIndex = IndexSet(arrayLiteral: 99)
+        let index = IndexSet(arrayLiteral: 99)
         
-        let sutAction = AppAction.removeItem(at: mockIndex)
+        let sutAction = AppAction.removeItem(at: index)
         
-        XCTAssertEqual(sutAction, AppAction.removeItem(at: mockIndex))
+        XCTAssertEqual(sutAction, .removeItem(at: index))
     }
     
     func test_sort() {
-        var mockSort = SortType.priority
-        var sutAction = AppAction.sort(by: mockSort)
+        var sortType = SortType.priority
+        var sutAction = AppAction.sort(by: sortType)
         
-        XCTAssertEqual(sutAction, AppAction.sort(by: mockSort))
+        XCTAssertEqual(sutAction, .sort(by: sortType))
         
-        mockSort = .date
-        sutAction = .sort(by: mockSort)
+        sortType = .date
+        sutAction = .sort(by: sortType)
         
-        XCTAssertEqual(sutAction, AppAction.sort(by: mockSort))
+        XCTAssertEqual(sutAction, .sort(by: sortType))
     }
     
 }
@@ -55,4 +55,5 @@ extension AppAction: Equatable {
           return false
         }
     }
+    
 }

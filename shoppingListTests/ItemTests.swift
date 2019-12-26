@@ -11,28 +11,38 @@ import XCTest
 
 class ItemTests: XCTestCase {
     
-    func test_item_equal() {
-        let mockID = UUID()
-        let mockName = "mockItem"
-        let mockDate = Date(timeIntervalSinceNow: -1000)
-        let mockPrority = Priority.medium
-        let mockItem1 = Item(id: mockID, name: mockName, date: mockDate, prority: mockPrority)
-        let mockItem2 = Item(id: mockID, name: mockName, date: mockDate, prority: mockPrority)
-        
-        XCTAssertEqual(mockItem1, mockItem2)
+    func test_item_init() {
+        let name = "fake item"
+        let date = Date(timeIntervalSince1970: 9999)
+        let prority = Priority.medium
+        let sut = Item(name: name, date: date, prority: prority)
+
+        XCTAssertEqual(sut.name, name)
+        XCTAssertEqual(sut.date, date)
+        XCTAssertEqual(sut.prority, prority)
     }
     
     func test_item_not_equal() {
-        let mockID = UUID()
-        let mockName = "mockItem"
-        let mockDate = Date(timeIntervalSinceNow: -1000)
-        let mockPrority = Priority.medium
-        let mockItem1 = Item(id: mockID, name: mockName, date: mockDate, prority: mockPrority)
-        let mockItem2 = Item(name: mockName, date: mockDate, prority: mockPrority)
+        let name = "fake item"
+        let date = Date(timeIntervalSince1970: 9999)
+        let prority = Priority.medium
+        let sutItem = Item(name: name, date: date, prority: prority)
+        let notExpectedItem = Item(name: name, date: date, prority: prority)
         
-        XCTAssertNotEqual(mockItem1, mockItem2)
+        XCTAssertNotEqual(sutItem, notExpectedItem)
     }
 
+    func test_item_equal() {
+        let name = "fake item"
+        let date = Date(timeIntervalSince1970: 9999)
+        let prority = Priority.medium
+        let uuid = UUID()
+        let sutItem = Item(id: uuid, name: name, date: date, prority: prority)
+        let expectedItem = Item(id: uuid, name: name, date: date, prority: prority)
+        
+        XCTAssertEqual(sutItem, expectedItem)
+    }
+    
 }
 
 extension Item: Equatable {
