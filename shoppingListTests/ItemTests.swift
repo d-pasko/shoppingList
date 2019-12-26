@@ -15,7 +15,7 @@ class ItemTests: XCTestCase {
         let name = "fake item"
         let date = Date(timeIntervalSince1970: 9999)
         let prority = Priority.medium
-        let sut = Item(name: name, date: date, prority: prority)
+        let sutItem = Item(name: name, date: date, prority: prority)
 
         XCTAssertEqual(sut.name, name)
         XCTAssertEqual(sut.date, date)
