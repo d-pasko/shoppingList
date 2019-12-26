@@ -10,34 +10,34 @@ import XCTest
 @testable import shoppingList
 
 class AppReducerTests: XCTestCase {
-    let mockItems = [Item(name: "mockItem", date: .init(timeIntervalSinceNow: -10), prority: .low),
-                     Item(name: "mockItem", date: .init(timeIntervalSince1970: 10), prority: .high)]
-    let mockSortType = SortType.date
-    lazy var mockState = AppState(items: mockItems, sortType: mockSortType)
+    let items = [Item(name: "fake item", date: .init(timeIntervalSinceNow: -10), prority: .low),
+                 Item(name: "fake item", date: .init(timeIntervalSince1970: 10), prority: .high)]
+    let sortType = SortType.date
+    lazy var oldState = AppState(items: items, sortType: sortType)
 
     func test_addItem() {
-        let mockItem = Item(name: "mockItem", date: .init(timeIntervalSince1970: 999), prority: .medium)
-        let expectedState = AppState(items: mockItems + [mockItem], sortType: mockSortType)
+        let item = Item(name: "fake item", date: .init(timeIntervalSince1970: 999), prority: .medium)
+        let expectedState = AppState(items: items + [item], sortType: sortType)
         
-        XCTAssertEqual(appReducer(state: mockState, action: .addItem(item: mockItem)), expectedState)
+        XCTAssertEqual(appReducer(state: oldState, action: .addItem(item: item)), expectedState)
     }
     
     func test_removeItem() {
-        let expectedState = AppState(items: [mockItems[1]], sortType: mockSortType)
-        let mockIndex = IndexSet(arrayLiteral: 0)
+        let expectedState = AppState(items: [items[1]], sortType: sortType)
+        let index = IndexSet(arrayLiteral: 0)
         
-        XCTAssertEqual(appReducer(state: mockState, action: .removeItem(at: mockIndex)), expectedState)
+        XCTAssertEqual(appReducer(state: oldState, action: .removeItem(at: index)), expectedState)
     }
    
     func test_sort() {
-        var mockSort = SortType.priority
-        var expectedState = AppState(items: mockItems.reversed(), sortType: mockSort)
+        var sort = SortType.priority
+        var expectedState = AppState(items: items.reversed(), sortType: sort)
         
-        XCTAssertEqual(appReducer(state: mockState, action: .sort(by: mockSort)), expectedState)
+        XCTAssertEqual(appReducer(state: oldState, action: .sort(by: sort)), expectedState)
      
-        mockSort = SortType.date
-        expectedState = AppState(items: mockItems, sortType: mockSort)
+        sort = SortType.date
+        expectedState = AppState(items: items, sortType: sort)
         
-        XCTAssertEqual(appReducer(state: mockState, action: .sort(by: mockSort)), expectedState)
+        XCTAssertEqual(appReducer(state: oldState, action: .sort(by: sort)), expectedState)
     }
 }
