@@ -23,7 +23,7 @@ func appReducer(state: AppState, action: AppAction) -> AppState {
             state.sortType = .date
         case .priority:
             state.items.sort { (item1, item2) -> Bool in
-                item1.prority.rawValue > item2.prority.rawValue
+                item1.priority.rawValue > item2.priority.rawValue
             }
             state.sortType = .priority
         }

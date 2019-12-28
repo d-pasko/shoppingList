@@ -13,9 +13,9 @@ class AppStoreTests: XCTestCase {
     
     func test_store() {
         let sutStore = AppStore()
-        let item1 = Item(name: "fake item1", date: Date(), prority: .low)
-        let item2 = Item(name: "fake item2", date: Date(timeIntervalSince1970: 10000), prority: .medium)
-        let item3 = Item(name: "fake item3", date: Date(timeIntervalSinceNow: -10000), prority: .high)
+        let item1 = Item(name: "fake item1", date: Date(), priority: .low)
+        let item2 = Item(name: "fake item2", date: Date(timeIntervalSince1970: 10000), priority: .medium)
+        let item3 = Item(name: "fake item3", date: Date(timeIntervalSinceNow: -10000), priority: .high)
         
         sutStore.dispatch(action: .addItem(item: item1))
         sutStore.dispatch(action: .addItem(item: item2))

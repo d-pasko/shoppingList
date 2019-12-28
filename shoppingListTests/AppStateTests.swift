@@ -11,8 +11,8 @@ import XCTest
 
 class AppStateTests: XCTestCase {
 
-    let items = [Item(name: "fake item", date: .init(timeIntervalSinceNow: -10), prority: .high),
-                 Item(name: "fake item", date: .init(timeIntervalSince1970: 10), prority: .low)]
+    let items = [Item(name: "fake item", date: .init(timeIntervalSinceNow: -10), priority: .high),
+                 Item(name: "fake item", date: .init(timeIntervalSince1970: 10), priority: .low)]
 
     func test_state_equal() {
         let sutState = AppState(items: items, sortType: .priority)

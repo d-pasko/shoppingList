@@ -11,7 +11,7 @@ import SwiftUI
 struct ItemView: View {
     let item: Item
     private var backgroundColor: Color {
-        switch item.prority {
+        switch item.priority {
         case .low:
             return .green
         case .medium:
@@ -34,7 +34,7 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(item: Item(name: "iPhone", date: Date(), prority: .medium))
+        ItemView(item: Item(name: "iPhone", date: Date(), priority: .medium))
             .previewLayout(.fixed(width: 400, height: 50))
     }
 }
