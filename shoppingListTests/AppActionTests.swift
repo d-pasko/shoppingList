@@ -12,7 +12,7 @@ import XCTest
 class AppActionTests: XCTestCase {
 
     func test_addItem() {
-        let item = Item(name: "MockItem", date: .init(timeIntervalSinceNow: -2000), prority: .medium)
+        let item = Item(name: "MockItem", date: .init(timeIntervalSinceNow: -2000), priority: .medium)
         
         let sutAction = AppAction.addItem(item: item)
         

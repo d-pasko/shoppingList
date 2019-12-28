@@ -40,7 +40,7 @@ struct AddItemView: View {
                     let item = Item(
                         name: self.nameText,
                         date: self.dateField,
-                        prority: self.priorityField
+                        priority: self.priorityField
                     )
                     self.store.dispatch(action: .addItem(item: item))
                     self.isAddingMode = false

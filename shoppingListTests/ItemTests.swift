@@ -14,20 +14,20 @@ class ItemTests: XCTestCase {
     func test_item_init() {
         let name = "fake item"
         let date = Date(timeIntervalSince1970: 9999)
-        let prority = Priority.medium
-        let sut = Item(name: name, date: date, prority: prority)
+        let priority = Priority.medium
+        let sut = Item(name: name, date: date, priority: priority)
 
         XCTAssertEqual(sut.name, name)
         XCTAssertEqual(sut.date, date)
-        XCTAssertEqual(sut.prority, prority)
+        XCTAssertEqual(sut.priority, priority)
     }
     
     func test_item_not_equal() {
         let name = "fake item"
         let date = Date(timeIntervalSince1970: 9999)
-        let prority = Priority.medium
-        let sutItem = Item(name: name, date: date, prority: prority)
-        let notExpectedItem = Item(name: name, date: date, prority: prority)
+        let priority = Priority.medium
+        let sutItem = Item(name: name, date: date, priority: priority)
+        let notExpectedItem = Item(name: name, date: date, priority: priority)
         
         XCTAssertNotEqual(sutItem, notExpectedItem)
     }
@@ -35,10 +35,10 @@ class ItemTests: XCTestCase {
     func test_item_equal() {
         let name = "fake item"
         let date = Date(timeIntervalSince1970: 9999)
-        let prority = Priority.medium
+        let priority = Priority.medium
         let uuid = UUID()
-        let sutItem = Item(id: uuid, name: name, date: date, prority: prority)
-        let expectedItem = Item(id: uuid, name: name, date: date, prority: prority)
+        let sutItem = Item(id: uuid, name: name, date: date, priority: priority)
+        let expectedItem = Item(id: uuid, name: name, date: date, priority: priority)
         
         XCTAssertEqual(sutItem, expectedItem)
     }
@@ -50,6 +50,6 @@ extension Item: Equatable {
         lhs.date == rhs.date &&
         lhs.id == rhs.id &&
         lhs.name == rhs.name &&
-        lhs.prority == rhs.prority
+        lhs.priority == rhs.priority
     }
 }

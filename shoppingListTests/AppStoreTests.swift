@@ -13,9 +13,9 @@ class AppStoreTests: XCTestCase {
     
     func test_store() {
         let store = AppStore()
-        let mockItem1 = Item(name: "mockItem1", date: Date(), prority: .low)
-        let mockItem2 = Item(name: "mockItem2", date: Date(timeIntervalSince1970: 10000), prority: .medium)
-        let mockItem3 = Item(name: "mockItem3", date: Date(timeIntervalSinceNow: -10000), prority: .high)
+        let mockItem1 = Item(name: "mockItem1", date: Date(), priority: .low)
+        let mockItem2 = Item(name: "mockItem2", date: Date(timeIntervalSince1970: 10000), priority: .medium)
+        let mockItem3 = Item(name: "mockItem3", date: Date(timeIntervalSinceNow: -10000), priority: .high)
         
         store.dispatch(action: .addItem(item: mockItem1))
         store.dispatch(action: .addItem(item: mockItem2))

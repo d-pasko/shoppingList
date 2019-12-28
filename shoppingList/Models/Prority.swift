@@ -1,5 +1,5 @@
 //
-//  Prority.swift
+//  Priority.swift
 //  shoppingList
 //
 //  Created by Damian Pasko on 2019/12/05.

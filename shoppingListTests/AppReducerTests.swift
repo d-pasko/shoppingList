@@ -10,13 +10,13 @@ import XCTest
 @testable import shoppingList
 
 class AppReducerTests: XCTestCase {
-    let mockItems = [Item(name: "mockItem", date: .init(timeIntervalSinceNow: -10), prority: .low),
-                     Item(name: "mockItem", date: .init(timeIntervalSince1970: 10), prority: .high)]
+    let mockItems = [Item(name: "mockItem", date: .init(timeIntervalSinceNow: -10), priority: .low),
+                     Item(name: "mockItem", date: .init(timeIntervalSince1970: 10), priority: .high)]
     let mockSortType = SortType.date
     lazy var mockState = AppState(items: mockItems, sortType: mockSortType)
 
     func test_addItem() {
-        let mockItem = Item(name: "mockItem", date: .init(timeIntervalSince1970: 999), prority: .medium)
+        let mockItem = Item(name: "mockItem", date: .init(timeIntervalSince1970: 999), priority: .medium)
         let expectedState = AppState(items: mockItems + [mockItem], sortType: mockSortType)
         
         XCTAssertEqual(appReducer(state: mockState, action: .addItem(item: mockItem)), expectedState)
