@@ -12,24 +12,24 @@ import XCTest
 class AppStoreTests: XCTestCase {
     
     func test_store() {
-        let store = AppStore()
-        let mockItem1 = Item(name: "mockItem1", date: Date(), priority: .low)
-        let mockItem2 = Item(name: "mockItem2", date: Date(timeIntervalSince1970: 10000), priority: .medium)
-        let mockItem3 = Item(name: "mockItem3", date: Date(timeIntervalSinceNow: -10000), priority: .high)
+        let sutStore = AppStore()
+        let item1 = Item(name: "fake item1", date: Date(), priority: .low)
+        let item2 = Item(name: "fake item2", date: Date(timeIntervalSince1970: 10000), priority: .medium)
+        let item3 = Item(name: "fake item3", date: Date(timeIntervalSinceNow: -10000), priority: .high)
         
-        store.dispatch(action: .addItem(item: mockItem1))
-        store.dispatch(action: .addItem(item: mockItem2))
-        store.dispatch(action: .addItem(item: mockItem3))
+        sutStore.dispatch(action: .addItem(item: item1))
+        sutStore.dispatch(action: .addItem(item: item2))
+        sutStore.dispatch(action: .addItem(item: item3))
         
-        store.dispatch(action: .sort(by: .priority))
+        sutStore.dispatch(action: .sort(by: .priority))
         
-        store.dispatch(action: .removeItem(at: .init(arrayLiteral: 2)))
+        sutStore.dispatch(action: .removeItem(at: .init(arrayLiteral: 2)))
         
-        store.dispatch(action: .sort(by: .date))
+        sutStore.dispatch(action: .sort(by: .date))
         
-        let expectedState = AppState(items: [mockItem3, mockItem2], sortType: .date)
+        let expectedState = AppState(items: [item3, item2], sortType: .date)
         
-        XCTAssertEqual(store.state, expectedState)
+        XCTAssertEqual(sutStore.state, expectedState)
     }
 
 }
